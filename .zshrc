@@ -122,3 +122,9 @@ if [[ -t 0 && $- = *i* ]]
 then
   stty -ixon
 fi
+
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/oracle/instantclient_21_1"
+
+function ssh {
+  /usr/bin/ssh $@ -t "tmux new-session -s $USER || tmux attach-session -t $USER"
+}
